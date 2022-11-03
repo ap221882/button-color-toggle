@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { logRoles } from "@testing-library/react";
 import App from "./App";
 
 test("button has correct initial color and text", () => {
