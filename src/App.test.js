@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import App from "./App";
+import App, { replaceCamelWithSpaces } from "./App";
 
 test("button has correct initial color and text", () => {
   render(<App />);
@@ -72,4 +72,17 @@ test("disabled button has gray background and reverts to blue", () => {
   expect(button).toHaveStyle({ backgroundColor: "gray" });
   fireEvent.click(checkbox);
   expect(button).toHaveStyle({ backgroundColor: "blue" });
+});
+
+// Describe statement is a way of grouping test
+describe("spaces before camel-case capital letters", () => {
+  test("works for no inner capital letters", () => {
+    expect(replaceCamelWithSpaces("Red")).toBe("Red");
+  });
+  test("works for one inner capital letter", () => {
+    expect(replaceCamelWithSpaces("MidnightBlue")).toBe("Midnight Blue");
+  });
+  test("works for multiple inner capital letter", () => {
+    expect(replaceCamelWithSpaces("MediumVioletRed")).toBe("Medium Violet Red");
+  });
 });
