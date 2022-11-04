@@ -4,20 +4,20 @@ import App, { replaceCamelWithSpaces } from "./App";
 test("button has correct initial color and text", () => {
   render(<App />);
   // text
-  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  const colorButton = screen.getByRole("button", { name: "Change to pink" });
   // color
-  expect(colorButton).toHaveStyle({ backgroundColor: "red" });
+  expect(colorButton).toHaveStyle({ backgroundColor: "yellow" });
 });
 
-test("button when clicked turns blue and updates", () => {
+test("button when clicked turns pink and updates", () => {
   render(<App />);
-  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  const colorButton = screen.getByRole("button", { name: "Change to pink" });
   //click button
   fireEvent.click(colorButton);
   //expect color blue
-  expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
+  expect(colorButton).toHaveStyle({ backgroundColor: "pink" });
   //expect text "Change to red"
-  expect(colorButton).toHaveTextContent("Change to red");
+  expect(colorButton).toHaveTextContent("Change to yellow");
 });
 
 // checkbox to disable toggle
@@ -25,7 +25,7 @@ test("initial conditions", () => {
   render(<App />);
 
   // check that the button starts out enabled
-  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  const colorButton = screen.getByRole("button", { name: "Change to pink" });
   expect(colorButton).toBeEnabled();
   // check that the checkbox starts out unchecked
   const checkbox = screen.getByRole("checkbox");
@@ -44,9 +44,9 @@ test("Checkbox disables button on first click and enables on second click", () =
 });
 
 // expect red to be gray and disabled
-test("disabled button has gray background and reverts to red", () => {
+test("disabled button has gray background and reverts to yellow", () => {
   render(<App />);
-  const button = screen.getByRole("button", { name: "Change to blue" });
+  const button = screen.getByRole("button", { name: "Change to pink" });
   const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
   // check button is red and correct
   // expect(button).toHaveStyle({ backgroundColor: "red" });
@@ -55,13 +55,13 @@ test("disabled button has gray background and reverts to red", () => {
   fireEvent.click(checkbox);
   expect(button).toHaveStyle({ backgroundColor: "gray" });
   fireEvent.click(checkbox);
-  expect(button).toHaveStyle({ backgroundColor: "red" });
+  expect(button).toHaveStyle({ backgroundColor: "yellow" });
 });
 
 // expect blue to be gray and disabled
-test("disabled button has gray background and reverts to blue", () => {
+test("disabled button has gray background and reverts to pink", () => {
   render(<App />);
-  const button = screen.getByRole("button", { name: "Change to blue" });
+  const button = screen.getByRole("button", { name: "Change to pink" });
   const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
   fireEvent.click(button);
   // check button is blue and correct
@@ -71,7 +71,7 @@ test("disabled button has gray background and reverts to blue", () => {
   fireEvent.click(checkbox);
   expect(button).toHaveStyle({ backgroundColor: "gray" });
   fireEvent.click(checkbox);
-  expect(button).toHaveStyle({ backgroundColor: "blue" });
+  expect(button).toHaveStyle({ backgroundColor: "pink" });
 });
 
 // Describe statement is a way of grouping test
